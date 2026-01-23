@@ -1,3 +1,4 @@
+import Footer from "./commons/components/footer";
 import Header from "./commons/components/header";
 import PopularItems from "./commons/components/popular-items";
 import {
@@ -13,6 +14,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <PopularItems></PopularItems>
       </QueryClientProvider>
+      <Footer></Footer>
     </div>
   );
 }

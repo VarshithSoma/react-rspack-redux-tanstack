@@ -16,13 +16,20 @@ export default function ProductItem({ image, title, rating, price }: { image: st
         <Box css={{
             width: 295,
             height: 298,
-            backgroundImage: `url(${image})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
             borderRadius: 10,
             backgroundColor: "$neutral100",
-        }}></Box>
+            padding: "$5",
+        }}>
+            <Box css={{
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url(${image})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                borderRadius: 10,
+            }}></Box>
+        </Box>
         <Box
             css={{
                 width: 295,
@@ -32,9 +39,7 @@ export default function ProductItem({ image, title, rating, price }: { image: st
             <Heading
                 size="h6"
                 css={{
-                    lineHeight: 1,
-                    marginBottom: "4px",
-                    marginTop: "$4",
+                    fontSize: "$md"
                 }}
             >
                 {title}

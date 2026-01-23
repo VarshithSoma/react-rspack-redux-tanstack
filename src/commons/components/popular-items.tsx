@@ -4,7 +4,7 @@ import { getAllProducts } from "../services";
 
 export default function PopularItems() {
     const { data } = getAllProducts();
-    const trimData = data?.slice(0, 9);
+    const trimData = data?.slice(0, 10);
     return (
         <Box css={{
             display: "flex",
