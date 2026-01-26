@@ -13,7 +13,9 @@ export default function Footer() {
                 css={{
                     backgroundColor: "$neutral900",
                     borderRadius: "1rem",
-                    padding: "$10",
+                    padding: "$15",
+                    marginLeft: "3rem",
+                    marginRight: "3rem",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -28,7 +30,6 @@ export default function Footer() {
                         fontSize: "$5",
                         fontWeight: 700,
                         lineHeight: "1.2",
-
                     }}
                 >
                     STAY UPTO DATE ABOUT <br /> OUR LATEST OFFERS
@@ -121,7 +122,7 @@ export default function Footer() {
                     alignItems: "center",
                 }}
             >
-                <Text css={{ color: "$neutral600" }}>
+                <Text css={{ color: "$neutral600", height: "5rem" }}>
                     Shop.co © 2000–2023, All Rights Reserved
                 </Text>
 

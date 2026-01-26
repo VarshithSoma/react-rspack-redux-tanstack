@@ -21,3 +21,21 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </ThemeProvider>
   </React.StrictMode>,
 );
+//home-feature
+//home--components
+
+//home--services
+//home--state
+//home--helpers
+//home--constants
+//home--types
+// service-api-calls
+
+//routes in pages and paths are present in pages.
+//only routes in pages.
+//pages can also be in root.
+//common-inside src
+
+//checkout-feature
+//cart-feature
+

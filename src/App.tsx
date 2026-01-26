@@ -1,21 +1,28 @@
 import Footer from "./commons/components/footer";
 import Header from "./commons/components/header";
-import PopularItems from "./commons/components/popular-items";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Welcome from "./features/home/pages";
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import ProductDetails from "./features/product-detailed/pages";
 const queryClient = new QueryClient()
 function App() {
 
   return (
-    <div className="App">
-      <Header></Header>
-      <QueryClientProvider client={queryClient}>
-        <PopularItems></PopularItems>
-      </QueryClientProvider>
-      <Footer></Footer>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Header></Header>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={< Welcome />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+          </Routes>
+        </BrowserRouter>
+        <Footer></Footer>
+      </div>
+    </QueryClientProvider>
   );
 }
 
