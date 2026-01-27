@@ -7,7 +7,6 @@ export default function Welcome() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "2rem",
         }}>
             <Box css={{
                 paddingLeft: "10rem",

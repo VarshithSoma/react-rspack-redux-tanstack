@@ -17,6 +17,7 @@ export default function ProductDetailsPage() {
         queryKey: ["product", id],
         queryFn: () => getProductById(id ?? ""),
     });
+    console.log("mounted");
     if (isLoading) return <Text>Loading...</Text>;
     if (isError || !product) return <Text>Product not found</Text>;
     return (
@@ -82,6 +83,7 @@ export default function ProductDetailsPage() {
                     <SelectColor />
                     <LineBreak />
                     <SizeSelection />
+                    <LineBreak />
                     <Box css={{
                         display: "flex",
                         flexDirection: "row",
@@ -94,13 +96,22 @@ export default function ProductDetailsPage() {
                     </Box>
                 </Box>
             </Box>
+            <Box css={{
+                width: "90%"
+            }}>
+                <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-around", color: "$neutral500", borderBottom: "1px solid $neutral200" }}>
+                    <Text css={{ width: "15rem" }}>Product Details</Text>
+                    <Text css={{ width: "15rem", color: "$black900", borderBottom: "2px solid $black900", paddingBottom: "1rem", textAlign: "center" }}>Ratings & Reviews</Text>
+                    <Text css={{ width: "15rem" }}>FAQ</Text>
+                </Box>
+            </Box>
             <AllReviews />
 
             <Box css={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-around",
+                justifyContent: "space-between",
                 width: "100%",
                 padding: "4rem 10rem",
             }}>

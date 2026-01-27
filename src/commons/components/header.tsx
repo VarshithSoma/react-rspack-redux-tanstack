@@ -1,6 +1,6 @@
 import { Box, Input, Link } from "@sparrowengg/twigs-react";
-import { UserCircleIcon, TableIcon } from '@sparrowengg/twigs-react-icons';
 import { useNavigate } from "react-router-dom";
+import { LuShoppingCart, LuUser } from "react-icons/lu";
 export default function Header() {
     const navigate = useNavigate();
     return (
@@ -10,7 +10,8 @@ export default function Header() {
             alignItems: "center",
             justifyContent: "space-around",
             padding: "$10",
-            gap: "$10"
+            gap: "$10",
+            borderBottom: "1px solid $neutral200"
         }}>
             <Box css={{
                 fontSize: "$2xl",
@@ -55,12 +56,14 @@ export default function Header() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                gap: "10px"
+                gap: "2rem"
             }}>
-                <Link href="#" target="_blank">
-                    <TableIcon />
+                <Link href="" onClick={() => navigate("/cart")}>
+                    <LuShoppingCart />
                 </Link>
-                <Link href="#" target="_blank"><UserCircleIcon /></Link>
+                <Link href="#" target="_blank">
+                    <LuUser />
+                </Link>
             </Box>
         </Box>
     )

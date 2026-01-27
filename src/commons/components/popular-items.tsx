@@ -5,14 +5,18 @@ import { useNavigate } from "react-router-dom";
 
 export function PopularItems() {
     const { data } = getAllProducts();
-    const random = Math.floor(Math.random() * data?.length);
-    const trimData = data?.slice(random, random + 4);
+    let random = Math.floor(Math.random() * data?.length);
+    let trimData = data?.slice(random, random + 4);
+    if (trimData?.length < 4) {
+        random = 0;
+        trimData = data?.slice(random, random + 4);
+    }
     return (
         <Box css={{
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             alignItems: "center",
             width: "100%",
             marginBottom: "3rem"
@@ -36,6 +40,7 @@ export default function PopularItemsWelcome({ title, buttonText }: { title: stri
             alignItems: "center",
             justifyContent: "space-around",
             width: "100%",
+            marginBottom: "4rem"
         }}>
             <Text css={{
                 fontSize: "$2xl",
@@ -64,5 +69,6 @@ export function HollowButton({ text }: { text: string }) {
             cursor: "pointer",
             display: "block",
             margin: "0 auto",
+            marginTop: "2rem",
         }}>{text}</Button>
 }

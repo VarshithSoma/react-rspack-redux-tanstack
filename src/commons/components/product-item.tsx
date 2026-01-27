@@ -19,7 +19,7 @@ export default function ProductItem({
 
     return (
         <Box
-            onClick={() => navigate(`/product/${id}`)}
+            onClick={() => navigate(`/${id}`)}
             css={{
                 width: 295,
                 height: 405,

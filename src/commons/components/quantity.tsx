@@ -1,58 +1,74 @@
-import { Box } from "@sparrowengg/twigs-react";
+import { Box, Text } from "@sparrowengg/twigs-react";
 import { useState } from "react";
 
 export default function QuantityInput() {
     const [quantity, setQuantity] = useState(1);
+
+    const decrement = () => {
+        if (quantity > 1) setQuantity(q => q - 1);
+    };
+
+    const increment = () => {
+        setQuantity(q => q + 1);
+    };
+
     return (
-        <Box css={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "$neutral100",
-            borderRadius: "10rem",
-            padding: "$4",
-            gap: "$4"
-        }}>
-            <button onClick={() => setQuantity(quantity - 1)}
-                style={{
-                    border: "none",
+        <Box
+            css={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "$3",
+                backgroundColor: "$neutral100",
+                borderRadius: "10rem",
+            }}
+        >
+            <Box
+                as="button"
+                onClick={decrement}
+                css={{
                     width: "2rem",
                     height: "2rem",
                     borderRadius: "50%",
+                    border: "none",
+                    backgroundColor: "$neutral100",
+                    color: "$neutral900",
+                    fontSize: "$md",
+                    fontWeight: 500,
+                    cursor: quantity <= 1 ? "not-allowed" : "pointer",
+                    opacity: quantity <= 1 ? 0.4 : 1,
+                }}
+            >
+                -
+            </Box>
+            <Text
+                css={{
+                    width: "2rem",
+                    textAlign: "center",
+                    fontSize: "$md",
+                    fontWeight: 500,
+                    color: "$neutral900",
+                }}
+            >
+                {quantity}
+            </Text>
+            <Box
+                as="button"
+                onClick={increment}
+                css={{
+                    width: "2rem",
+                    height: "2rem",
+                    borderRadius: "50%",
+                    border: "none",
                     backgroundColor: "$neutral100",
                     color: "$neutral900",
                     fontSize: "$md",
                     fontWeight: 500,
                     cursor: "pointer",
-                }} disabled={quantity <= 1}>-</button>
-            <input type="number" value={quantity} onChange={(e) => setQuantity(Number(e.target.value))} disabled={quantity <= 1} style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                marginLeft: "1rem",
-                backgroundColor: "transparent",
-                border: "none",
-                width: "2rem",
-                height: "2rem",
-                borderRadius: "50%",
-                color: "$neutral900",
-                fontSize: "$md",
-                fontWeight: 500,
-                cursor: "pointer",
-            }} />
-            <button onClick={() => setQuantity(quantity + 1)} style={{
-                border: "none",
-                width: "2rem",
-                height: "2rem",
-                borderRadius: "50%",
-                backgroundColor: "$neutral100",
-                color: "$neutral900",
-                fontSize: "$md",
-                fontWeight: 500,
-                cursor: "pointer",
-            }} >+</button>
+                }}
+            >
+                +
+            </Box>
         </Box>
-    )
+    );
 }

@@ -13,7 +13,6 @@ export default function AllReviews() {
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
             gap: "2rem",
-            marginTop: "2rem",
             padding: "4rem 10rem",
         }}>
             <Review></Review>

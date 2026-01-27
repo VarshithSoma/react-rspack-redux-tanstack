@@ -1,6 +1,6 @@
 import Footer from "./commons/components/footer";
 import Header from "./commons/components/header";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import {
   QueryClient,
@@ -11,13 +11,14 @@ import AppRoutes from "./routes/app-routes";
 const queryClient = new QueryClient();
 
 function App() {
+  console.log("app mounted");
   return (
     <QueryClientProvider client={queryClient}>
-      <HashRouter>
+      <BrowserRouter>
         <Header />
         <AppRoutes />
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 }
