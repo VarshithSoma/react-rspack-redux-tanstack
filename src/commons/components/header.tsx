@@ -1,6 +1,8 @@
 import { Box, Input, Link } from "@sparrowengg/twigs-react";
 import { UserCircleIcon, TableIcon } from '@sparrowengg/twigs-react-icons';
+import { useNavigate } from "react-router-dom";
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <Box css={{
             display: "flex",
@@ -12,8 +14,9 @@ export default function Header() {
         }}>
             <Box css={{
                 fontSize: "$2xl",
-                fontWeight: 900
-            }}>
+                fontWeight: 900,
+                cursor: "pointer",
+            }} onClick={() => navigate("/")}>
                 SHOP.CO
             </Box>
             <Box css={{

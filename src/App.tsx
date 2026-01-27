@@ -1,6 +1,7 @@
 import Footer from "./commons/components/footer";
 import Header from "./commons/components/header";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -12,11 +13,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Header />
-      <BrowserRouter>
+      <HashRouter>
+        <Header />
         <AppRoutes />
-      </BrowserRouter>
-      <Footer />
+        <Footer />
+      </HashRouter>
     </QueryClientProvider>
   );
 }

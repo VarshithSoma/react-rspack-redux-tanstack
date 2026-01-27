@@ -1,8 +1,6 @@
 import { Box, Text, Button, Image } from "@sparrowengg/twigs-react";
-import PopularItems from "../../../commons/components/popular-items";
-import { useNavigate } from "react-router-dom";
+import PopularItemsWelcome from "../../../commons/components/popular-items";
 export default function Welcome() {
-    const navigate = useNavigate();
     return (
         <Box css={{
             display: "flex",
@@ -84,14 +82,14 @@ export default function Welcome() {
                 </Box>
             </Box >
             <WelcomeBrands></WelcomeBrands>
-            <PopularItemsWelcome title="New Arrivals"></PopularItemsWelcome>
+            <PopularItemsWelcome title="New Arrivals" buttonText="View All"></PopularItemsWelcome>
             <Box css={{
                 width: "80%",
                 height: "1px",
                 backgroundColor: "$neutral200",
             }}>
             </Box>
-            <PopularItemsWelcome title="Top Selling"></PopularItemsWelcome>
+            <PopularItemsWelcome title="Top Selling" buttonText="View All"></PopularItemsWelcome>
         </Box>)
 }
 function Stats({ count, label }: { count: string, label: string }) {
@@ -137,39 +135,4 @@ function WelcomeBrands() {
         <Image src="/zara.png" alt="Welcome Brands" ></Image>
         <Image src="/ck.png" alt="Welcome Brands" ></Image>
     </Box>)
-}
-function PopularItemsWelcome({ title }: { title: string }) {
-    const navigate = useNavigate();
-    return <Box css={{
-        marginTop: "$20",
-    }}>
-        <Box css={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "space-around",
-            width: "100%",
-        }}>
-            <Text css={{
-                fontSize: "$2xl",
-                fontWeight: 700,
-                lineHeight: "1.2",
-            }}>{title}</Text>
-            <PopularItems />
-            <Button
-                onClick={() => navigate("/all-products")}
-                css={{
-                    backgroundColor: "$white900",
-                    color: "$black900",
-                    borderRadius: "10rem",
-                    fontSize: "$sm",
-                    fontWeight: 500,
-                    lineHeight: "1.2",
-                    border: "1px solid $black400",
-                    width: "10rem",
-                    height: "2rem",
-                    cursor: "pointer",
-                }}>View All</Button>
-        </Box>
-    </Box>
 }

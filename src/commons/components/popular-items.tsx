@@ -1,18 +1,21 @@
-import { Box } from "@sparrowengg/twigs-react";
+import { Box, Text, Button } from "@sparrowengg/twigs-react";
 import ProductItem from "./product-item";
 import { getAllProducts } from "../services";
+import { useNavigate } from "react-router-dom";
 
-export default function PopularItems() {
+export function PopularItems() {
     const { data } = getAllProducts();
-    const trimData = data?.slice(0, 4);
+    const random = Math.floor(Math.random() * data?.length);
+    const trimData = data?.slice(random, random + 4);
     return (
         <Box css={{
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
-            justifyContent: "space-around",
+            justifyContent: "space-between",
             alignItems: "center",
-            width: "100%"
+            width: "100%",
+            marginBottom: "3rem"
         }}>{
                 trimData?.map((item: any) => {
                     return <ProductItem id={item.id} image={item.image} title={item.title} rating={item.rating.rate} price={item.price} />
@@ -20,4 +23,46 @@ export default function PopularItems() {
             }
         </Box>
     )
+}
+export default function PopularItemsWelcome({ title, buttonText }: { title: string, buttonText?: string }) {
+
+    const buttonTextPresent = buttonText ?? "View All";
+    return <Box css={{
+        marginTop: "$20",
+    }}>
+        <Box css={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-around",
+            width: "100%",
+        }}>
+            <Text css={{
+                fontSize: "$2xl",
+                fontWeight: 700,
+                lineHeight: "1.2",
+            }}>{title}</Text>
+            <PopularItems />
+            <HollowButton text={buttonTextPresent} />
+        </Box>
+    </Box>
+}
+export function HollowButton({ text }: { text: string }) {
+    const navigate = useNavigate();
+    return <Button
+        onClick={() => navigate("/all-products")}
+        css={{
+            backgroundColor: "$white900",
+            color: "$black900",
+            borderRadius: "10rem",
+            fontSize: "$sm",
+            fontWeight: 500,
+            lineHeight: "1.2",
+            border: "1px solid $black400",
+            width: "10rem",
+            height: "2rem",
+            cursor: "pointer",
+            display: "block",
+            margin: "0 auto",
+        }}>{text}</Button>
 }

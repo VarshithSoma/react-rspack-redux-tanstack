@@ -23,7 +23,7 @@ export default function AllProductsPage() {
             <Box
                 css={{
                     display: "grid",
-                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gridTemplateColumns: "repeat(4, 1fr)",
                     gap: "2rem",
                     marginTop: "2rem",
                 }}

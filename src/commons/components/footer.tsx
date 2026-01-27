@@ -125,13 +125,10 @@ export default function Footer() {
                 <Text css={{ color: "$neutral600", height: "5rem" }}>
                     Shop.co © 2000–2023, All Rights Reserved
                 </Text>
-
             </Box>
         </Box>
     );
 }
-
-
 function FooterColumn({ title, items }: any) {
     return (
         <Box>
