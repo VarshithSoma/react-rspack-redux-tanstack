@@ -1,25 +1,23 @@
 import { Box, Heading, Text, Button } from "@sparrowengg/twigs-react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getProductById } from "../../../commons/services";
 import ProductRating from "../../../commons/components/product-rating";
+import { getProductById } from "../../../commons/services";
 
 export default function ProductDetails() {
     const { id } = useParams();
     const [product, setProduct] = useState<any>(null);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         if (!id) return;
-
         getProductById(id)
             .then(setProduct)
             .finally(() => setLoading(false));
     }, [id]);
+    console.log("ProductDetails mounted");
 
     if (loading) return <Text>Loading...</Text>;
     if (!product) return <Text>Product not found</Text>;
-
     return (
         <Box
             css={{

@@ -1,6 +1,8 @@
 import { Box, Text, Button, Image } from "@sparrowengg/twigs-react";
 import PopularItems from "../../../commons/components/popular-items";
+import { useNavigate } from "react-router-dom";
 export default function Welcome() {
+    const navigate = useNavigate();
     return (
         <Box css={{
             display: "flex",
@@ -137,6 +139,7 @@ function WelcomeBrands() {
     </Box>)
 }
 function PopularItemsWelcome({ title }: { title: string }) {
+    const navigate = useNavigate();
     return <Box css={{
         marginTop: "$20",
     }}>
@@ -153,18 +156,20 @@ function PopularItemsWelcome({ title }: { title: string }) {
                 lineHeight: "1.2",
             }}>{title}</Text>
             <PopularItems />
-            <Button css={{
-                backgroundColor: "$white900",
-                color: "$black900",
-                borderRadius: "10rem",
-                fontSize: "$sm",
-                fontWeight: 500,
-                lineHeight: "1.2",
-                border: "1px solid $black400",
-                width: "10rem",
-                height: "2rem",
-                cursor: "pointer",
-            }}>View All</Button>
+            <Button
+                onClick={() => navigate("/all-products")}
+                css={{
+                    backgroundColor: "$white900",
+                    color: "$black900",
+                    borderRadius: "10rem",
+                    fontSize: "$sm",
+                    fontWeight: 500,
+                    lineHeight: "1.2",
+                    border: "1px solid $black400",
+                    width: "10rem",
+                    height: "2rem",
+                    cursor: "pointer",
+                }}>View All</Button>
         </Box>
     </Box>
 }
