@@ -2,12 +2,13 @@ import { Box, Text, Button } from "@sparrowengg/twigs-react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import QuantityInput from "../components/quantity";
 import LineBreak from "../../product-details/components/line-break";
-import { useAppSelector } from "../../../commons/store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
+import { removeFromCart } from "../../../commons/store/slices/cart-slice";
+import { useNavigate } from "react-router-dom";
 
 
 export default function CartPage() {
     const cartData = useAppSelector((state) => state.cart.items);
-
     return (
         <Box css={{ display: "flex", flexDirection: "column", width: "100%", padding: "5rem" }}>
             <Text css={{ fontSize: "2rem", fontWeight: 700, marginBottom: "2rem" }}>YOUR CART</Text>
@@ -18,16 +19,19 @@ export default function CartPage() {
         </Box>);
 }
 function OrderSummary() {
+    const navigate = useNavigate();
+    const cartData = useAppSelector((state) => state.cart.items);
+    const total = cartData.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     return <Box css={{
         display: "flex", flexDirection: "column", width: "35%", border: "1px solid $neutral200", padding: "2rem", borderRadius: "10px"
     }}>
         <Text css={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "2rem" }}>Order Summary</Text>
         <Box css={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Subtotal</Text><Text>$100</Text></Box>
+            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Subtotal</Text><Text>${total}</Text></Box>
             <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Delivery Fee</Text><Text>$10</Text></Box>
             <LineBreak></LineBreak>
-            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Total</Text><Text>$110</Text></Box>
-            <Button css={{ width: "100%", height: "2.1rem", borderRadius: "10rem", backgroundColor: "$neutral900", color: "$white900", fontWeight: 500 }}  >
+            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Total</Text><Text>${total + 10}</Text></Box>
+            <Button css={{ width: "100%", height: "2.1rem", borderRadius: "10rem", backgroundColor: "$neutral900", color: "$white900", fontWeight: 500 }} onClick={() => navigate("/checkout")} >
                 <Text>Checkout</Text>
             </Button>
         </Box>
@@ -77,6 +81,7 @@ function CartItems({ cartData }: { cartData: any[] }) {
     );
 }
 function CartItem({ id, image, title, price, quantity }: { id: number, image: string, title: string, price: number, quantity: number }) {
+    const dispatch = useAppDispatch();
     return <Box css={{
         display: "flex",
         flexDirection: "row",
@@ -115,7 +120,7 @@ function CartItem({ id, image, title, price, quantity }: { id: number, image: st
                 cursor: "pointer",
             }}
         >
-            <RiDeleteBin5Fill size={20} />
+            <RiDeleteBin5Fill size={20} onClick={() => dispatch(removeFromCart(id))} />
             <QuantityInput id={id} quantity={quantity} />
         </Box>
     </Box >

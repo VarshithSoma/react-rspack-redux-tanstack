@@ -1,6 +1,4 @@
 import { Box, Text } from "@sparrowengg/twigs-react";
-import { useState } from "react";
-
 export default function QuantityInput({ quantity, setQuantity }: { quantity: number, setQuantity: (quantity: number) => void }) {
 
     const decrement = () => {

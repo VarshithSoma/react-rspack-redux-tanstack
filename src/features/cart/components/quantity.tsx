@@ -17,6 +17,8 @@ export default function QuantityInput({ id, quantity }: { id: number, quantity: 
         >
             <Box
                 as="button"
+                // @ts-ignore
+                disabled={quantity <= 1}
                 onClick={() => dispatch(updateQuantity({ id, quantity: -1 }))}
                 css={{
                     width: "2rem",
