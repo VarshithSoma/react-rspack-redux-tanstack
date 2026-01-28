@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom";
 import ProductRating from "../../../commons/components/product-rating";
 import { getProductById } from "../../../commons/services";
 import { useQuery } from "@tanstack/react-query";
-import QuantityInput from "../../../commons/components/quantity";
+import QuantityInput from "../components/quantity";
 import SelectColor from "../components/colors";
 import LineBreak from "../components/line-break";
 import AllReviews from "../components/all-reviews";
 import PopularItemsWelcome from "../../../commons/components/popular-items";
 import SizeSelection from "../components/size-button";
 import { addToCart } from "../../../commons/store/slices/cart-slice";
-import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
+import { useAppDispatch } from "../../../commons/store/hooks";
+import { useState } from "react";
 
 export default function ProductDetailsPage() {
     const { id } = useParams();
@@ -18,13 +19,10 @@ export default function ProductDetailsPage() {
         queryKey: ["product", id],
         queryFn: () => getProductById(id ?? ""),
     });
+    const [quantity, setQuantity] = useState(1);
     const dispatch = useAppDispatch();
-    console.log("component mounted");
-    const cartData = useAppSelector((state: { cart: { items: any; }; }) => state.cart.items);
-    console.log("Cart Items:", cartData);
     if (isLoading) return <Text>Loading...</Text>;
     if (isError) return <Text>Error loading product</Text>;
-    console.log("Product:", product);
     return (
         <Box css={{
             display: "flex",
@@ -96,7 +94,7 @@ export default function ProductDetailsPage() {
                         justifyContent: "flex-start",
                         gap: "$4"
                     }}>
-                        <QuantityInput />
+                        <QuantityInput quantity={quantity} setQuantity={setQuantity} />
                         <Button
                             css={{
                                 width: "100%",
@@ -108,19 +106,14 @@ export default function ProductDetailsPage() {
                                 fontWeight: 500,
                             }}
                             onClick={() => {
-                                console.log("Add to Cart clicked", product); // Debug log
-                                if (!product) {
-                                    console.error("Product is undefined!");
-                                    return;
-                                }
                                 dispatch(addToCart({
                                     id: product.id,
                                     title: product.title,
                                     image: product.image,
                                     price: product.price,
-                                    quantity: 1,
+                                    quantity: quantity,
                                 }));
-                                console.log("Item added to cart"); // Debug log
+                                setQuantity(1);
                             }}
                         >
                             Add to Cart

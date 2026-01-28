@@ -1,22 +1,12 @@
 import { Box, Text, Button } from "@sparrowengg/twigs-react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import QuantityInput from "../../../commons/components/quantity";
+import QuantityInput from "../components/quantity";
 import LineBreak from "../../product-details/components/line-break";
-import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
-import { addToCart } from "../../../commons/store/slices/cart-slice";
+import { useAppSelector } from "../../../commons/store/hooks";
 
 
 export default function CartPage() {
-    const dispatch = useAppDispatch();
-    console.log("component mounted");
     const cartData = useAppSelector((state) => state.cart.items);
-    const fullState = useAppSelector((state) => state); // Add this
-    console.log("Full Redux State:", fullState); // Add this
-    console.log("Cart Items:", cartData);
-    const store = useAppSelector((state) => state);
-    console.log("Store instance check:", store);
-    console.log("Cart items from selector:", cartData);
-    console.log("Cart items length:", cartData.length);
 
     return (
         <Box css={{ display: "flex", flexDirection: "column", width: "100%", padding: "5rem" }}>
@@ -76,6 +66,7 @@ function CartItems({ cartData }: { cartData: any[] }) {
             {cartData.map((item) => (
                 <CartItem
                     key={item.id}
+                    id={item.id}
                     image={item.image}
                     title={item.title}
                     price={item.price}
@@ -85,7 +76,7 @@ function CartItems({ cartData }: { cartData: any[] }) {
         </Box>
     );
 }
-function CartItem({ image, title, price, quantity }: { image: string, title: string, price: number, quantity: number }) {
+function CartItem({ id, image, title, price, quantity }: { id: number, image: string, title: string, price: number, quantity: number }) {
     return <Box css={{
         display: "flex",
         flexDirection: "row",
@@ -125,7 +116,7 @@ function CartItem({ image, title, price, quantity }: { image: string, title: str
             }}
         >
             <RiDeleteBin5Fill size={20} />
-            <QuantityInput />
+            <QuantityInput id={id} quantity={quantity} />
         </Box>
     </Box >
 }

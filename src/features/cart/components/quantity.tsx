@@ -1,17 +1,9 @@
 import { Box, Text } from "@sparrowengg/twigs-react";
-import { useState } from "react";
+import { useAppDispatch } from "../../../commons/store/hooks";
+import { updateQuantity } from "../../../commons/store/slices/cart-slice";
 
-export default function QuantityInput() {
-    const [quantity, setQuantity] = useState(1);
-
-    const decrement = () => {
-        if (quantity > 1) setQuantity(q => q - 1);
-    };
-
-    const increment = () => {
-        setQuantity(q => q + 1);
-    };
-
+export default function QuantityInput({ id, quantity }: { id: number, quantity: number }) {
+    const dispatch = useAppDispatch()
     return (
         <Box
             css={{
@@ -25,7 +17,7 @@ export default function QuantityInput() {
         >
             <Box
                 as="button"
-                onClick={decrement}
+                onClick={() => dispatch(updateQuantity({ id, quantity: -1 }))}
                 css={{
                     width: "2rem",
                     height: "2rem",
@@ -54,7 +46,7 @@ export default function QuantityInput() {
             </Text>
             <Box
                 as="button"
-                onClick={increment}
+                onClick={() => dispatch(updateQuantity({ id, quantity: 1 }))}
                 css={{
                     width: "2rem",
                     height: "2rem",

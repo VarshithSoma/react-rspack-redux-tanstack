@@ -37,12 +37,12 @@ const cartSlice = createSlice({
         ) => {
             const item = state.items.find((item) => item.id === action.payload.id);
             if (item) {
-                item.quantity = action.payload.quantity;
+                item.quantity = item.quantity + action.payload.quantity;
             }
         },
         clearCart: (state) => {
             state.items = [];
-        },
+        }
     },
 });
 
