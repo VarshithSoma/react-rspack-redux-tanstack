@@ -10,17 +10,23 @@ export default function CheckOutPage() {
         register,
         handleSubmit,
         formState: { errors },
+        setError,
     } = useForm<CheckoutFormData>();
     const onSubmit = async (data: CheckoutFormData) => {
         try {
             await checkoutSchema.validate(data, { abortEarly: false });
-
             toast({
                 variant: "success",
                 title: "Checkout successful",
                 description: "Checkout successful",
             });
         } catch (err: any) {
+            err.inner.forEach((e: any) => {
+                setError(e.path, {
+                    type: "manual",
+                    message: e.message,
+                });
+            });
             toast({
                 variant: "error",
                 title: "Checkout failed",

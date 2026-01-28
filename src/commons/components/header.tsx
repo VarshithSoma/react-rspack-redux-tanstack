@@ -1,4 +1,4 @@
-import { Box, Input, Link } from "@sparrowengg/twigs-react";
+import { Box, IconButton, Input, Link } from "@sparrowengg/twigs-react";
 import { useNavigate } from "react-router-dom";
 import { LuShoppingCart, LuUser } from "react-icons/lu";
 export default function Header() {
@@ -29,16 +29,16 @@ export default function Header() {
                 <Link css={{
                     fontSize: "$sm",
                 }}
-                    href="#" target="_blank">Shop</Link>
+                    href="/all-products" target="_blank">Shop</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="#" target="_blank">On Sale</Link>
+                }} href="/all-products" target="_blank">On Sale</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="#" target="_blank">New Arrivals</Link>
+                }} href="/all-products" target="_blank">New Arrivals</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="#" target="_blank">Brands</Link>
+                }} href="/all-products" target="_blank">Brands</Link>
             </Box>
             <Box css={{
                 width: "30%"
@@ -58,16 +58,9 @@ export default function Header() {
                 alignItems: "center",
                 gap: "2rem"
             }}>
-                <Box
-                    css={{ cursor: "pointer" }}
-                    onClick={() => navigate("/cart")}
-                >
-                    <LuShoppingCart />
-                </Box>
-                <Link href="#" target="_blank">
-                    <LuUser />
-                </Link>
+                <IconButton variant={"ghost"} color={"secondary"} onClick={() => navigate("/cart")} icon={<LuShoppingCart />} />
+                <IconButton variant={"ghost"} color={"secondary"} icon={<LuUser />} />
             </Box>
-        </Box>
+        </Box >
     )
 }
