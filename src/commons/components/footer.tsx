@@ -51,7 +51,7 @@ export default function Footer() {
                             borderRadius: "3rem"
                         }}
                     />
-                    <Button variant="solid" color="primary"
+                    <Button color={"secondary"} variant="solid"
                         css={{
                             backgroundColor: "$neutral50",
                             color: "$neutral900",

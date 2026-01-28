@@ -55,6 +55,7 @@ export default function PopularItemsWelcome({ title, buttonText }: { title: stri
 export function HollowButton({ text }: { text: string }) {
     const navigate = useNavigate();
     return <Button
+        color={"secondary"}
         onClick={() => navigate("/all-products")}
         css={{
             backgroundColor: "$white900",

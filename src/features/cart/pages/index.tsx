@@ -31,7 +31,7 @@ function OrderSummary() {
             <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Delivery Fee</Text><Text>$10</Text></Box>
             <LineBreak></LineBreak>
             <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Total</Text><Text>${total + 10}</Text></Box>
-            <Button css={{ width: "100%", height: "2.1rem", borderRadius: "10rem", backgroundColor: "$neutral900", color: "$white900", fontWeight: 500 }} onClick={() => navigate("/checkout")} >
+            <Button color={"secondary"} css={{ width: "100%", height: "2.1rem", borderRadius: "10rem", backgroundColor: "$neutral900", color: "$white900", fontWeight: 500 }} onClick={() => navigate("/checkout")} >
                 <Text>Checkout</Text>
             </Button>
         </Box>

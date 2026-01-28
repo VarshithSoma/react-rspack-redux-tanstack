@@ -12,7 +12,7 @@ export default function SizeSelection() {
     </Box>
 }
 function SizeButton({ text }: { text: string }) {
-    return <Button css={{
+    return <Button color={"secondary"} css={{
         width: "5rem",
         height: "2.5rem",
         borderRadius: "10rem",

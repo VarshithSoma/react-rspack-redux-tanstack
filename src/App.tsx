@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-query";
 import AppRoutes from "./routes/app-routes";
 
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

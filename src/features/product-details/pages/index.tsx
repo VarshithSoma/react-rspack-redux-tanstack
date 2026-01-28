@@ -96,6 +96,7 @@ export default function ProductDetailsPage() {
                     }}>
                         <QuantityInput quantity={quantity} setQuantity={setQuantity} />
                         <Button
+                            color={"secondary"}
                             css={{
                                 width: "100%",
                                 height: "2.1rem",
