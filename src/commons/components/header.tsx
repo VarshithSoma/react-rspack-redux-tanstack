@@ -29,16 +29,16 @@ export default function Header() {
                 <Link css={{
                     fontSize: "$sm",
                 }}
-                    href="/all-products" target="_blank">Shop</Link>
+                    href="/all-products">Shop</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="/all-products" target="_blank">On Sale</Link>
+                }} href="/all-products">On Sale</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="/all-products" target="_blank">New Arrivals</Link>
+                }} href="/all-products">New Arrivals</Link>
                 <Link css={{
                     fontSize: "$sm",
-                }} href="/all-products" target="_blank">Brands</Link>
+                }} href="/all-products">Brands</Link>
             </Box>
             <Box css={{
                 width: "30%"

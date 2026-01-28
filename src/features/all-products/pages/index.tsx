@@ -3,7 +3,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import ProductItem from "../../../commons/components/product-item";
 import { getProducts } from "../../../commons/services";
+import { Product } from "../../../commons/constants";
 const ITEMS_PER_PAGE = 9;
+
+
 
 export default function AllProductsPage() {
     const [activePage, setActivePage] = useState(1);
@@ -28,7 +31,7 @@ export default function AllProductsPage() {
                     marginTop: "2rem",
                 }}
             >
-                {data.products.map((item: any) => (
+                {data.products.map((item: Product) => (
                     <ProductItem
                         key={item.id}
                         id={item.id}

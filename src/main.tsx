@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         },
       }}
     >
-      <Toastr duration={10000} />
+      <Toastr duration={1000} />
       <App />
 
     </ThemeProvider>

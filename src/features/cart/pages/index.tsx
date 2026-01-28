@@ -5,6 +5,7 @@ import LineBreak from "../../product-details/components/line-break";
 import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
 import { removeFromCart } from "../../../commons/store/slices/cart-slice";
 import { useNavigate } from "react-router-dom";
+import type { CartItem } from "../../../commons/constants";
 
 
 export default function CartPage() {
@@ -37,7 +38,7 @@ function OrderSummary() {
         </Box>
     </Box>
 }
-function CartItems({ cartData }: { cartData: any[] }) {
+function CartItems({ cartData }: { cartData: CartItem[] }) {
     if (cartData.length === 0) {
         return (
             <Box css={{

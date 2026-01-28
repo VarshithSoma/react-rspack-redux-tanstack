@@ -2,6 +2,8 @@ import { Box, Text, Button } from "@sparrowengg/twigs-react";
 import ProductItem from "./product-item";
 import { getAllProducts } from "../services";
 import { useNavigate } from "react-router-dom";
+import { Product } from "../constants";
+
 
 export function PopularItems() {
     const { data } = getAllProducts();
@@ -21,7 +23,7 @@ export function PopularItems() {
             width: "100%",
             marginBottom: "3rem"
         }}>{
-                trimData?.map((item: any) => {
+                trimData?.map((item: Product) => {
                     return <ProductItem id={item.id} image={item.image} title={item.title} rating={item.rating.rate} price={item.price} />
                 })
             }

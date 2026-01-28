@@ -129,7 +129,7 @@ export default function Footer() {
         </Box>
     );
 }
-function FooterColumn({ title, items }: any) {
+function FooterColumn({ title, items }: { title: string, items: string[] }) {
     return (
         <Box>
             <Text

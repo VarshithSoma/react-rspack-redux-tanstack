@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Button } from "@sparrowengg/twigs-react";
+import { Box, Heading, Text, Button, toast } from "@sparrowengg/twigs-react";
 import { useParams } from "react-router-dom";
 import ProductRating from "../../../commons/components/product-rating";
 import { getProductById } from "../../../commons/services";
@@ -115,7 +115,14 @@ export default function ProductDetailsPage() {
                                     quantity: quantity,
                                 }));
                                 setQuantity(1);
+                                toast({
+                                    duration: 1000,
+                                    variant: "default",
+                                    title: `${product.title} added to cart`,
+                                    description: "Product added to cart successfully.",
+                                });
                             }}
+
                         >
                             Add to Cart
                         </Button>
