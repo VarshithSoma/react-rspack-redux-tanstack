@@ -2,14 +2,27 @@ import { Box, Text, Button } from "@sparrowengg/twigs-react";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import QuantityInput from "../../../commons/components/quantity";
 import LineBreak from "../../product-details/components/line-break";
+import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
+import { addToCart } from "../../../commons/store/slices/cart-slice";
+
 
 export default function CartPage() {
+    const dispatch = useAppDispatch();
     console.log("component mounted");
+    const cartData = useAppSelector((state) => state.cart.items);
+    const fullState = useAppSelector((state) => state); // Add this
+    console.log("Full Redux State:", fullState); // Add this
+    console.log("Cart Items:", cartData);
+    const store = useAppSelector((state) => state);
+    console.log("Store instance check:", store);
+    console.log("Cart items from selector:", cartData);
+    console.log("Cart items length:", cartData.length);
+
     return (
         <Box css={{ display: "flex", flexDirection: "column", width: "100%", padding: "5rem" }}>
             <Text css={{ fontSize: "2rem", fontWeight: 700, marginBottom: "2rem" }}>YOUR CART</Text>
             <Box css={{ display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between" }}>
-                <CartItems />
+                <CartItems cartData={cartData} />
                 <OrderSummary />
             </Box>
         </Box>);
@@ -30,19 +43,49 @@ function OrderSummary() {
         </Box>
     </Box>
 }
-function CartItems() {
-    return <Box css={{
-        display: "flex", flexDirection: "column", width: "60%", gap: "3rem", border: "1px solid $neutral200", padding: "2rem", borderRadius: "10px", "& > div:last-child": {
-            borderBottom: "none",
-            paddingBottom: "0",
-        },
-    }}>
-        <CartItem image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png" title="Product 1" price={100} />
-        <CartItem image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png" title="Product 2" price={200} />
-        <CartItem image="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png" title="Product 3" price={300} />
-    </Box>
+function CartItems({ cartData }: { cartData: any[] }) {
+    if (cartData.length === 0) {
+        return (
+            <Box css={{
+                display: "flex",
+                flexDirection: "column",
+                width: "60%",
+                border: "1px solid $neutral200",
+                padding: "2rem",
+                borderRadius: "10px"
+            }}>
+                <Text>Your cart is empty</Text>
+            </Box>
+        );
+    }
+
+    return (
+        <Box css={{
+            display: "flex",
+            flexDirection: "column",
+            width: "60%",
+            gap: "3rem",
+            border: "1px solid $neutral200",
+            padding: "2rem",
+            borderRadius: "10px",
+            "& > div:last-child": {
+                borderBottom: "none",
+                paddingBottom: "0",
+            },
+        }}>
+            {cartData.map((item) => (
+                <CartItem
+                    key={item.id}
+                    image={item.image}
+                    title={item.title}
+                    price={item.price}
+                    quantity={item.quantity}
+                />
+            ))}
+        </Box>
+    );
 }
-function CartItem({ image, title, price }: { image: string, title: string, price: number }) {
+function CartItem({ image, title, price, quantity }: { image: string, title: string, price: number, quantity: number }) {
     return <Box css={{
         display: "flex",
         flexDirection: "row",

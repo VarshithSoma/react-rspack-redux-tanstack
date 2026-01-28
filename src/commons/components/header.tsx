@@ -58,9 +58,12 @@ export default function Header() {
                 alignItems: "center",
                 gap: "2rem"
             }}>
-                <Link href="" onClick={() => navigate("/cart")}>
+                <Box
+                    css={{ cursor: "pointer" }}
+                    onClick={() => navigate("/cart")}
+                >
                     <LuShoppingCart />
-                </Link>
+                </Box>
                 <Link href="#" target="_blank">
                     <LuUser />
                 </Link>

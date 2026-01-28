@@ -1,15 +1,16 @@
-import { Box, Heading, Text } from "@sparrowengg/twigs-react";
+import { Box, Heading, Text, Button } from "@sparrowengg/twigs-react";
 import { useParams } from "react-router-dom";
 import ProductRating from "../../../commons/components/product-rating";
 import { getProductById } from "../../../commons/services";
 import { useQuery } from "@tanstack/react-query";
-import BlackButton from "../../../commons/components/black-button";
 import QuantityInput from "../../../commons/components/quantity";
 import SelectColor from "../components/colors";
 import LineBreak from "../components/line-break";
 import AllReviews from "../components/all-reviews";
 import PopularItemsWelcome from "../../../commons/components/popular-items";
 import SizeSelection from "../components/size-button";
+import { addToCart } from "../../../commons/store/slices/cart-slice";
+import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
 
 export default function ProductDetailsPage() {
     const { id } = useParams();
@@ -17,9 +18,13 @@ export default function ProductDetailsPage() {
         queryKey: ["product", id],
         queryFn: () => getProductById(id ?? ""),
     });
-    console.log("mounted");
+    const dispatch = useAppDispatch();
+    console.log("component mounted");
+    const cartData = useAppSelector((state: { cart: { items: any; }; }) => state.cart.items);
+    console.log("Cart Items:", cartData);
     if (isLoading) return <Text>Loading...</Text>;
-    if (isError || !product) return <Text>Product not found</Text>;
+    if (isError) return <Text>Error loading product</Text>;
+    console.log("Product:", product);
     return (
         <Box css={{
             display: "flex",
@@ -92,7 +97,34 @@ export default function ProductDetailsPage() {
                         gap: "$4"
                     }}>
                         <QuantityInput />
-                        <BlackButton text="Add to Cart" />
+                        <Button
+                            css={{
+                                width: "100%",
+                                height: "2.1rem",
+                                marginLeft: "3rem",
+                                borderRadius: "10rem",
+                                backgroundColor: "$neutral900",
+                                color: "$white900",
+                                fontWeight: 500,
+                            }}
+                            onClick={() => {
+                                console.log("Add to Cart clicked", product); // Debug log
+                                if (!product) {
+                                    console.error("Product is undefined!");
+                                    return;
+                                }
+                                dispatch(addToCart({
+                                    id: product.id,
+                                    title: product.title,
+                                    image: product.image,
+                                    price: product.price,
+                                    quantity: 1,
+                                }));
+                                console.log("Item added to cart"); // Debug log
+                            }}
+                        >
+                            Add to Cart
+                        </Button>
                     </Box>
                 </Box>
             </Box>
