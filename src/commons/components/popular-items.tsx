@@ -4,7 +4,6 @@ import { getAllProducts } from "../services";
 import { useNavigate } from "react-router-dom";
 import { Product } from "../constants";
 
-
 export function PopularItems() {
     const { data } = getAllProducts();
     let random = Math.floor(Math.random() * data?.length);
@@ -73,5 +72,8 @@ export function HollowButton({ text }: { text: string }) {
             display: "block",
             margin: "0 auto",
             marginTop: "2rem",
+            "&:hover": {
+                color: "$accent50"
+            }
         }}>{text}</Button>
 }

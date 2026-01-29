@@ -51,12 +51,15 @@ export default function Footer() {
                             borderRadius: "3rem"
                         }}
                     />
-                    <Button color={"secondary"} variant="solid"
+                    <Button color={"secondary"}
                         css={{
                             backgroundColor: "$neutral50",
                             color: "$neutral900",
                             padding: "$7",
-                            borderRadius: "3rem"
+                            borderRadius: "3rem",
+                            "&:hover": {
+                                color: "$accent50"
+                            }
                         }}
                     >Subscribe to Newsletter</Button>
                 </Box>

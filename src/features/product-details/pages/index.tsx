@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Button, toast } from "@sparrowengg/twigs-react";
+import { Box, Heading, Text, Button, toast, CircleLoader } from "@sparrowengg/twigs-react";
 import { useParams } from "react-router-dom";
 import ProductRating from "../../../commons/components/product-rating";
 import { getProductById } from "../../../commons/services";
@@ -21,7 +21,8 @@ export default function ProductDetailsPage() {
     });
     const [quantity, setQuantity] = useState(1);
     const dispatch = useAppDispatch();
-    if (isLoading) return <Text>Loading...</Text>;
+    if (isLoading) return <Text css={{ display: "flex", height: "80vh", width: "100vw", alignItems: "center", justifyContent: "center" }}>
+        <CircleLoader size="lg" color="primary" css={{ height: "5rem", width: "5rem" }} /></Text>;
     if (isError) return <Text>Error loading product</Text>;
     return (
         <Box css={{
@@ -133,9 +134,9 @@ export default function ProductDetailsPage() {
                 width: "90%"
             }}>
                 <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-around", color: "$neutral500", borderBottom: "1px solid $neutral200" }}>
-                    <Text css={{ width: "15rem" }}>Product Details</Text>
-                    <Text css={{ width: "15rem", color: "$black900", borderBottom: "2px solid $black900", paddingBottom: "1rem", textAlign: "center" }}>Ratings & Reviews</Text>
-                    <Text css={{ width: "15rem" }}>FAQ</Text>
+                    <Text css={{ width: "15rem", cursor: "pointer" }}>Product Details</Text>
+                    <Text css={{ width: "15rem", color: "$black900", cursor: "pointer", borderBottom: "2px solid $black900", paddingBottom: "1rem", textAlign: "center" }}>Ratings & Reviews</Text>
+                    <Text css={{ width: "15rem", cursor: "pointer" }}>FAQ</Text>
                 </Box>
             </Box>
             <AllReviews />

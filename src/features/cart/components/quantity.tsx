@@ -1,6 +1,7 @@
 import { Box, Text } from "@sparrowengg/twigs-react";
 import { useAppDispatch } from "../../../commons/store/hooks";
 import { updateQuantity } from "../../../commons/store/slices/cart-slice";
+import { MinusIcon, PlusIcon } from "@sparrowengg/twigs-react-icons";
 
 export default function QuantityInput({ id, quantity }: { id: number, quantity: number }) {
     const dispatch = useAppDispatch()
@@ -29,11 +30,13 @@ export default function QuantityInput({ id, quantity }: { id: number, quantity: 
                     color: "$neutral900",
                     fontSize: "$md",
                     fontWeight: 500,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     cursor: quantity <= 1 ? "not-allowed" : "pointer",
-                    opacity: quantity <= 1 ? 0.4 : 1,
                 }}
             >
-                -
+                <MinusIcon style={{ width: "20px", height: "20px" }} />
             </Box>
             <Text
                 css={{
@@ -42,6 +45,9 @@ export default function QuantityInput({ id, quantity }: { id: number, quantity: 
                     fontSize: "$md",
                     fontWeight: 500,
                     color: "$neutral900",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
                 }}
             >
                 {quantity}
@@ -59,9 +65,12 @@ export default function QuantityInput({ id, quantity }: { id: number, quantity: 
                     fontSize: "$md",
                     fontWeight: 500,
                     cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
                 }}
             >
-                +
+                <PlusIcon style={{ width: "20px", height: "20px" }} />
             </Box>
         </Box>
     );

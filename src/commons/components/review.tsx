@@ -1,5 +1,6 @@
 import { Box, Text } from "@sparrowengg/twigs-react";
 import ProductRating from "./product-rating";
+import { TickCircleFillIcon } from "@sparrowengg/twigs-react-icons";
 
 export default function Review() {
     return (
@@ -38,11 +39,14 @@ export default function Review() {
                     <div style={{ width: "10px", height: "5px", backgroundColor: "#A3AEBD", borderRadius: "50%" }}></div>
                 </Box>
             </Box>
-            <Text css={{
-                fontSize: "$md",
-                fontWeight: 800,
-                marginTop: "$2",
-            }}>Samantha D.</Text>
+            <Box css={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: "$4" }} >
+                <Text css={{
+                    fontSize: "$md",
+                    fontWeight: 800,
+                    marginTop: "$2",
+                }}>Samantha D.</Text>
+                <TickCircleFillIcon style={{ width: "20px", height: "20px", color: "#01AB31", marginTop: "0.1rem" }} />
+            </Box>
             <Box>
                 <Text
                     css={{
@@ -62,6 +66,6 @@ export default function Review() {
                 marginTop: "$3",
                 color: "$neutral700",
             }}>Posted on August 20, 2024</Text>
-        </Box>
+        </Box >
     )
 }

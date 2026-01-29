@@ -1,23 +1,22 @@
-import { Box, Button, Text } from "@sparrowengg/twigs-react";
+import { Box, Chip, Text } from "@sparrowengg/twigs-react";
 
 export default function SizeSelection() {
     return <Box>
         <Text>Choose Size</Text>
-        <Box css={{ display: "flex", flexDirection: "row", gap: "$4", margin: "1rem 0rem" }}>
-            <SizeButton text="Small" />
-            <SizeButton text="Medium" />
-            <SizeButton text="Large" />
-            <SizeButton text="X-Large" />
+        <Box css={{ display: "flex", flexDirection: "row", margin: "1rem 0rem" }}>
+            <Chip color="secondary" size="md" css={{ height: "2.5rem", borderRadius: "10rem", padding: "$2" }} selectable>
+                Small
+            </Chip>
+            <Chip color="secondary" size="md" css={{ height: "2.5rem", borderRadius: "10rem", padding: "$2" }} selectable>
+                Medium
+            </Chip>
+            <Chip color="secondary" size="md" css={{ height: "2.5rem", borderRadius: "10rem", padding: "$2" }} selectable>
+                Large
+            </Chip>
+            <Chip color="secondary" size="md" css={{ height: "2.5rem", borderRadius: "10rem", padding: "$2" }} selectable>
+                X-Large
+            </Chip>
+
         </Box>
-    </Box>
-}
-function SizeButton({ text }: { text: string }) {
-    return <Button color={"secondary"} css={{
-        width: "5rem",
-        height: "2.5rem",
-        borderRadius: "10rem",
-        backgroundColor: "$neutral100",
-        color: "$neutral500",
-        fontSize: "$xs",
-    }}>{text}</Button>
+    </Box >
 }
