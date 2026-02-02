@@ -1,128 +1,23 @@
-import { Box, Text, Button } from "@sparrowengg/twigs-react";
-import { RiDeleteBin5Fill } from "react-icons/ri";
-import QuantityInput from "../components/quantity";
-import LineBreak from "../../product-details/components/line-break";
-import { useAppDispatch, useAppSelector } from "../../../commons/store/hooks";
-import { removeFromCart } from "../../../commons/store/slices/cart-slice";
-import { useNavigate } from "react-router-dom";
-import type { CartItem } from "../../../commons/constants";
-
+import { Flex, Text } from '@sparrowengg/twigs-react';
+import { useAppSelector } from '../../../commons/store/hooks';
+import OrderSummary from '../components/order-summary';
+import { CartItems } from '../components/cart-item';
 
 export default function CartPage() {
-    const cartData = useAppSelector((state) => state.cart.items);
-    return (
-        <Box css={{ display: "flex", flexDirection: "column", width: "100%", padding: "5rem" }}>
-            <Text css={{ fontSize: "2rem", fontWeight: 700, marginBottom: "2rem" }}>YOUR CART</Text>
-            <Box css={{ display: "flex", flexDirection: "row", alignItems: "flex-start", justifyContent: "space-between" }}>
-                <CartItems cartData={cartData} />
-                <OrderSummary />
-            </Box>
-        </Box>);
-}
-function OrderSummary() {
-    const navigate = useNavigate();
-    const cartData = useAppSelector((state) => state.cart.items);
-    const total = cartData.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    return <Box css={{
-        display: "flex", flexDirection: "column", width: "35%", border: "1px solid $neutral200", padding: "2rem", borderRadius: "10px"
-    }}>
-        <Text css={{ fontSize: "1.5rem", fontWeight: 700, marginBottom: "2rem" }}>Order Summary</Text>
-        <Box css={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Subtotal</Text><Text>${total}</Text></Box>
-            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Delivery Fee</Text><Text>$10</Text></Box>
-            <LineBreak></LineBreak>
-            <Box css={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}><Text>Total</Text><Text>${total + 10}</Text></Box>
-            <Button color={"secondary"} css={{ width: "100%", height: "2.1rem", borderRadius: "10rem", backgroundColor: "$neutral900", color: "$white900", fontWeight: 500 }} onClick={() => navigate("/checkout")} >
-                <Text>Checkout</Text>
-            </Button>
-        </Box>
-    </Box>
-}
-function CartItems({ cartData }: { cartData: CartItem[] }) {
-    if (cartData.length === 0) {
-        return (
-            <Box css={{
-                display: "flex",
-                flexDirection: "column",
-                width: "60%",
-                border: "1px solid $neutral200",
-                padding: "2rem",
-                borderRadius: "10px"
-            }}>
-                <Text>Your cart is empty</Text>
-            </Box>
-        );
-    }
-
-    return (
-        <Box css={{
-            display: "flex",
-            flexDirection: "column",
-            width: "60%",
-            gap: "3rem",
-            border: "1px solid $neutral200",
-            padding: "2rem",
-            borderRadius: "10px",
-            "& > div:last-child": {
-                borderBottom: "none",
-                paddingBottom: "0",
-            },
-        }}>
-            {cartData.map((item) => (
-                <CartItem
-                    key={item.id}
-                    id={item.id}
-                    image={item.image}
-                    title={item.title}
-                    price={item.price}
-                    quantity={item.quantity}
-                />
-            ))}
-        </Box>
-    );
-}
-function CartItem({ id, image, title, price, quantity }: { id: number, image: string, title: string, price: number, quantity: number }) {
-    const dispatch = useAppDispatch();
-    return <Box css={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: "1rem",
-        width: "100%",
-        borderBottom: "1px solid $neutral200",
-        paddingBottom: "2.5rem"
-    }}>
-        <Box css={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "120px",
-            height: "120px",
-            backgroundColor: "$neutral100",
-            borderRadius: "1rem"
-        }}>
-        </Box>
-        <Box css={{ display: "flex", flexDirection: "column", width: "50%", alignItems: "flex-start", gap: "0.5rem" }}>
-            <Text>{title}</Text>
-            <Text css={{ color: "$neutral500", fontSize: "$sm", lineHeight: "1.2" }}>Size: Small</Text>
-            <Text css={{ color: "$neutral500", fontSize: "$sm", lineHeight: "1.2" }}>Color: White</Text>
-            <Text css={{ color: "$black900", fontSize: "$sm", lineHeight: "1.2" }}>${price}</Text>
-        </Box >
-        <Box
-            css={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "3rem",
-                alignItems: "flex-end",
-                justifyContent: "space-between",
-                color: "$negative500",
-                cursor: "pointer",
-            }}
-        >
-            <RiDeleteBin5Fill size={20} onClick={() => dispatch(removeFromCart(id))} />
-            <QuantityInput id={id} quantity={quantity} />
-        </Box>
-    </Box >
+  const cartData = useAppSelector((state) => state.cart.items);
+  return (
+    <Flex flexDirection="column" css={{ width: '100%', padding: '5rem' }}>
+      <Text size="lg" weight="bold" css={{ marginBottom: '2rem' }}>
+        YOUR CART
+      </Text>
+      <Flex
+        flexDirection="row"
+        alignItems="flex-start"
+        justifyContent="space-between"
+      >
+        <CartItems cartData={cartData} />
+        <OrderSummary />
+      </Flex>
+    </Flex>
+  );
 }

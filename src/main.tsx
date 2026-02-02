@@ -1,8 +1,7 @@
+import { defaultTheme, ThemeProvider, Toastr } from '@sparrowengg/twigs-react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import { defaultTheme, ThemeProvider, Toastr } from '@sparrowengg/twigs-react';
-
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -17,7 +16,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     >
       <Toastr duration={1000} />
       <App />
-
     </ThemeProvider>
   </React.StrictMode>,
 );
@@ -38,4 +36,3 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 //checkout-feature
 //cart-feature
-

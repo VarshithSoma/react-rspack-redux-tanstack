@@ -1,15 +1,11 @@
-import Footer from "./commons/components/footer";
-import Header from "./commons/components/header";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./commons/store";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import AppRoutes from "./routes/app-routes";
-import ScrollToTop from "./commons/helpers";
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import Footer from './commons/components/footer';
+import Header from './commons/components/header';
+import ScrollToTop from './commons/helpers';
+import { store } from './commons/store';
+import AppRoutes from './routes/app-routes';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,7 +17,6 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  console.log("app mounted");
   return (
     <BrowserRouter>
       <Provider store={store}>
