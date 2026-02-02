@@ -1,14 +1,17 @@
-export interface CartItem {
+export type CartItem = {
   id: number;
   title: string;
   image: string;
   price: number;
   quantity: number;
-}
-export const initialState: { items: CartItem[] } = {
+};
+export type CartState = {
+  items: CartItem[];
+};
+export const initialState: CartState = {
   items: [],
 };
-export interface Product {
+export type Product = {
   id: number;
   image: string;
   title: string;
@@ -18,12 +21,4 @@ export interface Product {
     count: number;
   };
   price: number;
-}
-
-export interface CartItem {
-  id: number;
-  image: string;
-  title: string;
-  price: number;
-  quantity: number;
-}
+};
