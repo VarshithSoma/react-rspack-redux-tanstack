@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@sparrowengg/twigs-react';
+import { Box, Button, Flex, Text } from '@sparrowengg/twigs-react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 import { getAllProducts } from '../services';
@@ -13,13 +13,12 @@ export function PopularItems() {
     trimData = data?.slice(random, random + 4);
   }
   return (
-    <Box
+    <Flex
+      flexDirection="row"
+      wrap="wrap"
+      justifyContent="space-around"
+      alignItems="center"
       css={{
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        alignItems: 'center',
         width: '100%',
         marginBottom: '3rem',
       }}
@@ -35,7 +34,7 @@ export function PopularItems() {
           />
         );
       })}
-    </Box>
+    </Flex>
   );
 }
 export default function PopularItemsWelcome({
@@ -52,28 +51,21 @@ export default function PopularItemsWelcome({
         marginTop: '$20',
       }}
     >
-      <Box
+      <Flex
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="space-around"
         css={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-around',
           width: '100%',
           marginBottom: '4rem',
         }}
       >
-        <Text
-          css={{
-            fontSize: '$2xl',
-            fontWeight: 700,
-            lineHeight: '1.2',
-          }}
-        >
+        <Text size="lg" weight="bold">
           {title}
         </Text>
         <PopularItems />
         <HollowButton text={buttonTextPresent} />
-      </Box>
+      </Flex>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import {  Flex, Grid } from '@sparrowengg/twigs-react';
+import { Flex, Grid } from '@sparrowengg/twigs-react';
 import { HollowButton } from '../../../commons/components/popular-items';
 import Review from '../../../commons/components/review';
 

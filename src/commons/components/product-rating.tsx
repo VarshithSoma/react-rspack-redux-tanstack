@@ -1,4 +1,4 @@
-import { Box, Text } from '@sparrowengg/twigs-react';
+import { Box, Flex, Text } from '@sparrowengg/twigs-react';
 
 type ProductRatingProps = {
   value: number;
@@ -9,12 +9,11 @@ export default function ProductRating({
   showText = true,
 }: ProductRatingProps) {
   return (
-    <Box
+    <Flex
+      alignItems="center"
+      gap="0.1rem"
       css={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '$1',
-        marginBottom: '$5',
+        marginBottom: '0.5rem',
         marginLeft: '-5px',
       }}
     >
@@ -24,16 +23,16 @@ export default function ProductRating({
 
       {showText && (
         <Text
+          size="xs"
+          weight="medium"
           css={{
-            fontSize: '$xs',
-            fontWeight: 400,
-            marginLeft: '$4',
+            marginLeft: '0.25rem',
           }}
         >
           {value}/5
         </Text>
       )}
-    </Box>
+    </Flex>
   );
 }
 

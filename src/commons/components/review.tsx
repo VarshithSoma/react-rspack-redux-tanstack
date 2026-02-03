@@ -1,43 +1,38 @@
-import { Box, Text } from '@sparrowengg/twigs-react';
+import { Box, Flex, Text } from '@sparrowengg/twigs-react';
 import { TickCircleFillIcon } from '@sparrowengg/twigs-react-icons';
 import ProductRating from './product-rating';
 
 export default function Review() {
   return (
-    <Box
+    <Flex
+      flexDirection="column"
+      alignItems="flex-start"
+      justifyContent="space-between"
       css={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
         width: '100%',
-        padding: '$10',
+        padding: '1rem',
         border: '1px solid $neutral200',
         borderRadius: '1rem',
-        margin: '$4',
+        margin: '0.5rem',
       }}
     >
-      <Box
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
         css={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
           width: '100%',
-          gap: '$4',
+          gap: '0.5rem',
         }}
       >
         <Box>
           <ProductRating value={4.5} showText={false}></ProductRating>
         </Box>
-        <Box
+        <Flex
+          alignItems="center"
+          justifyContent="space-around"
           css={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-around',
             width: '1.8rem',
-            gap: '$4',
+            gap: '0.5rem',
           }}
         >
           <div
@@ -64,22 +59,20 @@ export default function Review() {
               borderRadius: '50%',
             }}
           ></div>
-        </Box>
-      </Box>
-      <Box
+        </Flex>
+      </Flex>
+      <Flex
+        alignItems="center"
+        justifyContent="space-between"
         css={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '$4',
+          gap: '0.5rem',
         }}
       >
         <Text
+          size="md"
+          weight="bold"
           css={{
-            fontSize: '$md',
-            fontWeight: 800,
-            marginTop: '$2',
+            marginTop: '0.5rem',
           }}
         >
           Samantha D.
@@ -92,12 +85,11 @@ export default function Review() {
             marginTop: '0.1rem',
           }}
         />
-      </Box>
+      </Flex>
       <Box>
         <Text
+          size="sm"
           css={{
-            fontSize: '$sm',
-            fontWeight: 400,
             color: '$neutral400',
             margin: '$2',
             lineHeight: '1.6',
@@ -109,15 +101,15 @@ export default function Review() {
         </Text>
       </Box>
       <Text
+        size="sm"
+        weight="medium"
         css={{
-          fontSize: '$sm',
-          fontWeight: 400,
-          marginTop: '$3',
+          marginTop: '0.5rem',
           color: '$neutral700',
         }}
       >
         Posted on August 20, 2024
       </Text>
-    </Box>
+    </Flex>
   );
 }

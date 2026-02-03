@@ -1,4 +1,12 @@
-import { Box, Button, Input, Text } from '@sparrowengg/twigs-react';
+import {
+  Box,
+  Button,
+  Input,
+  Text,
+  Flex,
+  Grid,
+  Link,
+} from '@sparrowengg/twigs-react';
 
 export default function Footer() {
   return (
@@ -6,40 +14,29 @@ export default function Footer() {
       css={{
         backgroundColor: '$neutral200',
         marginTop: '5rem',
-        padding: '$10',
+        padding: '1rem',
       }}
     >
-      <Box
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
         css={{
           backgroundColor: '$neutral900',
           borderRadius: '1rem',
           padding: '$15',
-          marginLeft: '3rem',
-          marginRight: '3rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          margin: '3rem 0rem',
           position: 'relative',
           bottom: '4rem',
         }}
       >
-        <Text
-          as="h2"
-          css={{
-            color: '$accent50',
-            fontSize: '$5',
-            fontWeight: 700,
-            lineHeight: '1.2',
-          }}
-        >
+        <Text size="lg" weight="bold" css={{ color: 'white' }}>
           STAY UPTO DATE ABOUT <br /> OUR LATEST OFFERS
         </Text>
 
-        <Box
+        <Flex
+          flexDirection="column"
+          gap="$4"
           css={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '$4',
             width: '360px',
           }}
         >
@@ -66,19 +63,15 @@ export default function Footer() {
           >
             Subscribe to Newsletter
           </Button>
-        </Box>
-      </Box>
-
-      <Box
-        css={{
-          display: 'grid',
-          gridTemplateColumns: '2fr repeat(4, 1fr)',
-          gap: '$8',
-          marginBottom: '$8',
-        }}
+        </Flex>
+      </Flex>
+      <Grid
+        templateColumns="2fr repeat(4, 1fr)"
+        gap={['1rem']}
+        css={{ marginBottom: '$8' }}
       >
         <Box>
-          <Text as="h3" css={{ fontSize: '$7', fontWeight: '$bold' }}>
+          <Text size="lg" weight="bold">
             SHOP.CO
           </Text>
 
@@ -117,21 +110,19 @@ export default function Footer() {
             'Youtube Playlist',
           ]}
         />
-      </Box>
-
-      <Box
+      </Grid>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
         css={{
           borderTop: '1px solid $neutral300',
           paddingTop: '$5',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
         }}
       >
         <Text css={{ color: '$neutral600', height: '5rem' }}>
           Shop.co © 2000–2023, All Rights Reserved
         </Text>
-      </Box>
+      </Flex>
     </Box>
   );
 }
@@ -139,10 +130,10 @@ function FooterColumn({ title, items }: { title: string; items: string[] }) {
   return (
     <Box>
       <Text
+        size="sm"
+        weight="bold"
         css={{
-          fontSize: '$2',
           letterSpacing: '0.2em',
-          fontWeight: '$bold',
           marginBottom: '$4',
         }}
       >
@@ -150,16 +141,18 @@ function FooterColumn({ title, items }: { title: string; items: string[] }) {
       </Text>
 
       {items.map((item: string) => (
-        <Text
+        <Link
           key={item}
           css={{
+            fontSize: '0.8rem',
+            display: 'block',
             color: '$neutral600',
-            marginBottom: '$3',
+            marginBottom: '0.5rem',
             cursor: 'pointer',
           }}
         >
           {item}
-        </Text>
+        </Link>
       ))}
     </Box>
   );

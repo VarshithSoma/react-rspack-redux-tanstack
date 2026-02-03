@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@sparrowengg/twigs-react';
+import { Box, Heading, Text, Flex, Image } from '@sparrowengg/twigs-react';
 import { useNavigate } from 'react-router-dom';
 import ProductRating from './product-rating';
 
@@ -18,18 +18,17 @@ export default function ProductItem({
   const navigate = useNavigate();
 
   return (
-    <Box
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      gap="1rem"
       onClick={() => navigate(`/${id}`)}
       css={{
         width: 295,
         height: 405,
-        borderRadius: 10,
-        margin: 20,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 20,
+        borderRadius: '1rem',
+        margin: '1rem',
         cursor: 'pointer',
         '&:hover': {
           transform: 'translateY(-4px)',
@@ -37,35 +36,28 @@ export default function ProductItem({
         },
       }}
     >
-      <Box
+      <Image
+        src={image}
+        alt={title}
         css={{
           width: 295,
           height: 298,
-          borderRadius: 10,
+          objectFit: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
           backgroundColor: '$neutral100',
-          padding: '$5',
+          borderRadius: 10,
         }}
-      >
-        <Box
-          css={{
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${image})`,
-            backgroundSize: 'contain',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            borderRadius: 10,
-          }}
-        />
-      </Box>
-
+      />
       <Box css={{ width: 295, height: 94 }}>
-        <Heading size="h6" css={{ fontSize: '$md' }}>
+        <Heading size="h6" weight="bold" css={{ color: '$neutral900' }}>
           {title}
         </Heading>
         <ProductRating value={rating} />
-        <Text css={{ fontSize: '$md', fontWeight: 700 }}>${price}</Text>
+        <Text size="md" weight="bold" css={{ color: '$neutral900' }}>
+          ${price}
+        </Text>
       </Box>
-    </Box>
+    </Flex>
   );
 }
