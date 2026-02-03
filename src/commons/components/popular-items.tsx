@@ -1,17 +1,12 @@
 import { Box, Button, Flex, Text } from '@sparrowengg/twigs-react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../types';
-import { getAllProducts } from '../services';
+import { useGetProducts } from '../../features/all-products/services';
 import ProductItem from './product-item';
 
 export function PopularItems() {
-  const { data } = getAllProducts();
-  let random = Math.floor(Math.random() * data?.length);
-  let trimData = data?.slice(random, random + 4);
-  if (trimData?.length < 4) {
-    random = 0;
-    trimData = data?.slice(random, random + 4);
-  }
+  const { data} = useGetProducts(1);
+  let trimData = data?.products?.slice(0,4);
   return (
     <Flex
       flexDirection="row"

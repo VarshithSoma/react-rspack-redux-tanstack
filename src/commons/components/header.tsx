@@ -1,4 +1,11 @@
-import { Box, IconButton, Input, styled, Text } from '@sparrowengg/twigs-react';
+import {
+  Box,
+  IconButton,
+  Input,
+  styled,
+  Text,
+  Flex,
+} from '@sparrowengg/twigs-react';
 import { LuShoppingCart, LuUser } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../store/hooks';
@@ -106,14 +113,7 @@ export default function Header() {
           placeholder="Search for Products..."
         />
       </Box>
-      <Box
-        css={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: '2rem',
-        }}
-      >
+      <Flex alignItems="center" gap="2rem">
         <Box onClick={() => navigate('/cart')} css={{ position: 'relative' }}>
           <IconButton
             variant={'ghost'}
@@ -141,7 +141,7 @@ export default function Header() {
           </Text>
         </Box>
         <IconButton variant={'ghost'} color={'secondary'} icon={<LuUser />} />
-      </Box>
+      </Flex>
     </Box>
   );
 }
