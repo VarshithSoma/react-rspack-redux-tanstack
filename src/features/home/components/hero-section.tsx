@@ -34,12 +34,9 @@ export default function HeroSection() {
             FIND CLOTHES THAT MATCHES YOUR STYLE
           </Text>
           <Text
+            size="md"
             css={{
               color: '$neutral300',
-              fontSize: '$md',
-              fontWeight: 400,
-              lineHeight: '1.5',
-              letterSpacing: '0.01rem',
             }}
           >
             Browse through our diverse range of meticulously crafted garments,
@@ -138,20 +135,12 @@ function Seperator() {
 function Stats({ count, label }: { count: string; label: string }) {
   return (
     <Box>
-      <Text
-        css={{
-          fontSize: '$1xl',
-          fontWeight: 700,
-          lineHeight: '1.2',
-        }}
-      >
+      <Text size="lg" weight="bold">
         {count}+
       </Text>
       <Text
+        size="xs"
         css={{
-          fontSize: '$xs',
-          fontWeight: 400,
-          lineHeight: '1.5',
           width: '9rem',
         }}
       >

@@ -121,9 +121,9 @@ export default function Header() {
             icon={<LuShoppingCart />}
           />
           <Text
+            size="xxs"
+            weight="medium"
             css={{
-              fontSize: '8px',
-              fontWeight: 500,
               backgroundColor: '$secondary',
               color: '$white900',
               borderRadius: '50%',
