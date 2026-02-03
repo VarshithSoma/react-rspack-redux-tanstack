@@ -78,7 +78,8 @@ export function CartItem({
 export function CartItems({ cartData }: { cartData: CartItem[] }) {
   if (cartData.length === 0) {
     return (
-      <Text
+      <Flex
+        flexDirection="column"
         css={{
           width: '60%',
           border: '1px solid $neutral200',
@@ -86,8 +87,8 @@ export function CartItems({ cartData }: { cartData: CartItem[] }) {
           borderRadius: '10px',
         }}
       >
-        Your cart is empty
-      </Text>
+        <Text>Your cart is empty</Text>
+      </Flex>
     );
   }
 
