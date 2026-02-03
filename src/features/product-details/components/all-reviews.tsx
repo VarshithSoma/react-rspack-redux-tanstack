@@ -1,6 +1,6 @@
 import { Flex, Grid } from '@sparrowengg/twigs-react';
-import { HollowButton } from '../../../commons/components/popular-items';
-import Review from '../../../commons/components/review';
+import { HollowButton } from '@commons/components/popular-items';
+import Review from '@commons/components/review';
 
 export default function AllReviews() {
   return (

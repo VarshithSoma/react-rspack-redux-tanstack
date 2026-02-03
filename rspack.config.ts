@@ -16,6 +16,9 @@ export default defineConfig({
   },
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.js', '.jsx'],
+    alias: {
+      '@commons': path.resolve(__dirname, 'src/commons'),
+    },
   },
   module: {
     rules: [

@@ -20,6 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
     "paths": {
+      "@commons/*": ["./src/commons/*"],
       "react": ["./node_modules/@types/react"]
     }
   },

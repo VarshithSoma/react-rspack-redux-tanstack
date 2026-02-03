@@ -1,8 +1,8 @@
 import { Flex, Image, Text } from '@sparrowengg/twigs-react';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { useAppDispatch } from '../../../commons/store/hooks';
+import { useAppDispatch } from '@commons/store/hooks';
 import { removeFromCart } from '../slices/cart-slice';
-import { type CartItem } from '../../../commons/types';
+import { type CartItem } from '@commons/types';
 import QuantityInput from './quantity';
 
 export function CartItem({

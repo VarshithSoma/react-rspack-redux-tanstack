@@ -50,13 +50,11 @@ export default function ProductItem({
         }}
       />
       <Box css={{ width: 295, height: 94 }}>
-        <Heading size="h6" weight="bold" css={{ color: '$neutral900' }}>
+        <Heading size="h6" css={{ fontSize: '$md' }}>
           {title}
         </Heading>
         <ProductRating value={rating} />
-        <Text size="md" weight="bold" css={{ color: '$neutral900' }}>
-          ${price}
-        </Text>
+        <Text css={{ fontSize: '$md', fontWeight: 700 }}>${price}</Text>
       </Box>
     </Flex>
   );

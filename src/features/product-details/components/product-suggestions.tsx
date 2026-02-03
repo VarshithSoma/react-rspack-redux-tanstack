@@ -1,5 +1,5 @@
 import { Box, Text, Flex } from '@sparrowengg/twigs-react';
-import PopularItemsWelcome from '../../../commons/components/popular-items';
+import PopularItemsWelcome from '@commons/components/popular-items';
 import AllReviews from './all-reviews';
 
 export default function ProductSuggestions() {

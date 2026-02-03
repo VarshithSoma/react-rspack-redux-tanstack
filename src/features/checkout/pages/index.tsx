@@ -1,5 +1,5 @@
 import { Flex } from '@sparrowengg/twigs-react';
-import { useAppSelector } from '../../../commons/store/hooks';
+import { useAppSelector } from '@commons/store/hooks';
 import UserInfo from '../components/user-info';
 import CheckoutItems from '../components/chekout-items';
 

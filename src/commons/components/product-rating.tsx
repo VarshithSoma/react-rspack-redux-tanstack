@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@sparrowengg/twigs-react';
+import { Flex, Text } from '@sparrowengg/twigs-react';
 
 type ProductRatingProps = {
   value: number;

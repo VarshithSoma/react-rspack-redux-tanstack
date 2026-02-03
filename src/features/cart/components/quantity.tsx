@@ -1,6 +1,6 @@
 import { Flex, IconButton, Text } from '@sparrowengg/twigs-react';
 import { MinusIcon, PlusIcon } from '@sparrowengg/twigs-react-icons';
-import { useAppDispatch } from '../../../commons/store/hooks';
+import { useAppDispatch } from '@commons/store/hooks';
 import { updateQuantity } from '../slices/cart-slice';
 
 export default function QuantityInput({

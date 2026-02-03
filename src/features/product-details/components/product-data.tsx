@@ -7,14 +7,14 @@ import {
   Flex,
   Image,
 } from '@sparrowengg/twigs-react';
-import { Product } from '../../../commons/types';
-import ProductRating from '../../../commons/components/product-rating';
+import { Product } from '@commons/types';
+import ProductRating from '@commons/components/product-rating';
+import { useAppDispatch } from '@commons/store/hooks';
 import LineBreak from './line-break';
 import SelectColor from './colors';
 import SizeSelection from './size-button';
 import QuantityInput from './quantity';
 import { addToCart } from '../../cart/slices/cart-slice';
-import { useAppDispatch } from '../../../commons/store/hooks';
 import { useState } from 'react';
 
 export default function ProductData({ product }: { product: Product }) {
@@ -35,7 +35,7 @@ export default function ProductData({ product }: { product: Product }) {
           height: 520,
           borderRadius: 12,
           backgroundColor: '$neutral100',
-          padding: '$6',
+          padding: '0.5rem',
         }}
       >
         <Image
@@ -63,7 +63,7 @@ export default function ProductData({ product }: { product: Product }) {
           size="lg"
           weight="bold"
           css={{
-            marginTop: '$2',
+            marginTop: '0.5rem',
           }}
         >
           ${product.price}
@@ -71,7 +71,7 @@ export default function ProductData({ product }: { product: Product }) {
         <Text
           css={{
             color: '$neutral400',
-            marginTop: '$2',
+            marginTop: '0.5rem',
           }}
         >
           {product.description}

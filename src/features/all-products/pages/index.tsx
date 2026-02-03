@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AllProducts from '../components/all-products';
-import { Product } from '../../../commons/types';
+import { Product } from '@commons/types';
 import { useGetProducts } from '../services';
 import { CircleLoader, Text } from '@sparrowengg/twigs-react';
 

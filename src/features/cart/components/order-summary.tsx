@@ -1,13 +1,14 @@
 import { Button, Flex, Text } from '@sparrowengg/twigs-react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../commons/store/hooks';
+import { useAppSelector } from '@commons/store/hooks';
 import LineBreak from '../../product-details/components/line-break';
+import { CartItem } from '@commons/types';
 
 export default function OrderSummary() {
   const navigate = useNavigate();
   const cartData = useAppSelector((state) => state.cart.items);
   const total = cartData.reduce(
-    (acc, item) => acc + item.price * item.quantity,
+    (acc: number, item: CartItem) => acc + item.price * item.quantity,
     0,
   );
   return (

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { CartItem, initialState } from '../../../commons/types';
+import { CartItem, initialState } from '@commons/types';
 
 const cartSlice = createSlice({
   name: 'cart',

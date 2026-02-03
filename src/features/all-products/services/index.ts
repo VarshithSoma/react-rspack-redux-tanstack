@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { ITEMS_PER_PAGE } from '../../../commons/constants';
+import { ITEMS_PER_PAGE } from '@commons/constants';
 
 export async function getProducts(page: number, limit = 9) {
   const res = await fetch(`https://fakestoreapi.com/products`);

@@ -1,6 +1,6 @@
 import { Heading, Box, Pagination, Flex } from '@sparrowengg/twigs-react';
-import ProductItem from '../../../commons/components/product-item';
-import { Product } from '../../../commons/types';
+import ProductItem from '@commons/components/product-item';
+import { Product } from '@commons/types';
 const ITEMS_PER_PAGE = 9;
 export default function AllProducts({
   products,
