@@ -26,7 +26,7 @@ export default function Footer() {
           padding: '$15',
           margin: '3rem 0rem',
           position: 'relative',
-          bottom: '4rem',
+          bottom: '8rem',
         }}
       >
         <Text size="lg" weight="bold" css={{ color: 'white' }}>

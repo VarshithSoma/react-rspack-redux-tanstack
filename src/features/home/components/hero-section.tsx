@@ -1,27 +1,34 @@
-import { Box, Button, Text, Image } from '@sparrowengg/twigs-react';
+import { Box, Button, Text, Image, Flex } from '@sparrowengg/twigs-react';
 
 export default function HeroSection() {
   return (
-    <>
-      <Box
+    <Flex
+      flexDirection="column"
+      css={{
+        minHeight: 'calc(100vh - 72px)',
+        height: 'calc(100vh - 80px)',
+        overflow: 'hidden',
+      }}
+    >
+      <Flex
+        alignItems="center"
         css={{
+          flex: 1,
+          minHeight: 0,
           paddingLeft: '10rem',
           paddingRight: '10rem',
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
           backgroundColor: '$neutral100',
           gap: '5rem',
+          overflow: 'hidden',
         }}
       >
-        <Box
+        <Flex
+          flexDirection="column"
+          alignItems="stretch"
+          justifyContent="space-around"
+          gap="2rem"
           css={{
             width: '50%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'stretch',
-            justifyContent: 'space-around',
-            gap: '2rem',
           }}
         >
           <Text
@@ -63,14 +70,13 @@ export default function HeroSection() {
           >
             Shop Now
           </Button>
-          <Box
+          <Flex
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="space-around"
+            gap="2rem"
             css={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
               width: '50%',
-              justifyContent: 'space-around',
-              gap: '2rem',
             }}
           >
             <Stats count={'200'} label="International Brands" />
@@ -78,45 +84,72 @@ export default function HeroSection() {
             <Stats count={'2,000'} label="High-Quality Products" />
             <Seperator />
             <Stats count={'30,000'} label="Happy Customers" />
-          </Box>
-        </Box>
-        <Box
+          </Flex>
+        </Flex>
+        <Flex
+          alignItems="center"
+          justifyContent="center"
           css={{
+            overflow: 'hidden',
             width: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
           }}
         >
           <Image
             src="/landing-banner.jpg"
             alt="Welcome"
-            css={{ maxWidth: '100%', maxHeight: '100%' }}
+            css={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
           />
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
       <WelcomeBrands />
-    </>
+    </Flex>
   );
 }
 function WelcomeBrands() {
+  const BRANDS = [
+    { src: '/versace.png', alt: 'Versace' },
+    { src: '/gucci.png', alt: 'Gucci' },
+    { src: '/prada.png', alt: 'Prada' },
+    { src: '/zara.png', alt: 'Zara' },
+    { src: '/ck.png', alt: 'Calvin Klein' },
+  ];
   return (
-    <Box
+    <Flex
+      alignItems="center"
+      justifyContent="space-around"
+      gap="3rem"
       css={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around',
         width: '100%',
+        padding: '2rem 0rem',
         backgroundColor: '$black900',
         overflow: 'hidden',
       }}
     >
-      <Image src="/versace.png" alt="Welcome Brands"></Image>
-      <Image src="/gucci.png" alt="Welcome Brands"></Image>
-      <Image src="/prada.png" alt="Welcome Brands"></Image>
-      <Image src="/zara.png" alt="Welcome Brands"></Image>
-      <Image src="/ck.png" alt="Welcome Brands"></Image>
-    </Box>
+      {BRANDS.map(({ src, alt }) => (
+        <Flex
+          alignItems="center"
+          justifyContent="space-around"
+          shrink="0"
+          key={alt}
+          css={{
+            width: 140,
+            height: 60,
+          }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            css={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: 'contain',
+              filter: 'grayscale(100%)',
+              opacity: 0.85,
+            }}
+          />
+        </Flex>
+      ))}
+    </Flex>
   );
 }
 function Seperator() {

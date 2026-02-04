@@ -5,8 +5,8 @@ import { useGetProducts } from '../../features/all-products/services';
 import ProductItem from './product-item';
 
 export function PopularItems() {
-  const { data} = useGetProducts(1);
-  let trimData = data?.products?.slice(0,4);
+  const { data } = useGetProducts(1);
+  let trimData = data?.products?.slice(0, 4);
   return (
     <Flex
       flexDirection="row"
@@ -55,7 +55,7 @@ export default function PopularItemsWelcome({
           marginBottom: '4rem',
         }}
       >
-        <Text size="lg" weight="bold">
+        <Text weight="bold" css={{ fontSize: '1.6rem', margin: '3rem' }}>
           {title}
         </Text>
         <PopularItems />
