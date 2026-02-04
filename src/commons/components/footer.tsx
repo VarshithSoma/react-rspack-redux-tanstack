@@ -13,7 +13,7 @@ export default function Footer() {
     <Box
       css={{
         backgroundColor: '$neutral200',
-        marginTop: '5rem',
+        marginTop: '10rem',
         padding: '1rem',
       }}
     >
@@ -24,9 +24,8 @@ export default function Footer() {
           backgroundColor: '$neutral900',
           borderRadius: '1rem',
           padding: '$15',
-          margin: '3rem 0rem',
           position: 'relative',
-          bottom: '8rem',
+          bottom: '5rem',
         }}
       >
         <Text size="lg" weight="bold" css={{ color: 'white' }}>
